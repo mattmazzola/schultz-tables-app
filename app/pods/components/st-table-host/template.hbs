@@ -1,0 +1,26 @@
+<div class="st-table-host__controls">
+  <button type="button" {{action "start"}}>Start</button>
+  <button type="button" {{action "clear"}}>Clear</button>
+</div>
+
+<div class="st-table-host__table-container-outer">
+  <div class="st-table-host__table-container">
+    {{#if table}}
+    <div>
+      <h3>Expected Symbol: {{expectedSymbol}} Duration: {{duration}}</h3>
+    </div>
+    <div class="st-table {{if isTableCompleted 'st-table--completed'}}">
+      {{#each table.cells as |cell i|}}
+        <div class="st-table__cell" {{action "selectCell" cell}}>
+          {{cell.text}}
+        </div>
+      {{/each}}
+    </div>
+    {{/if}}
+  </div>
+</div>
+
+UserSequence: <br />
+{{#each userSequence as |selection i|}}
+  <div>{{i}} - {{selection.correct}} - {{selection.time}} - ({{selection.cell.x}}, {{selection.cell.y}})</div>
+{{/each}}

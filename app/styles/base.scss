@@ -61,7 +61,7 @@ nav > a {
 main {
   padding: 1em;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   flex: 1;
 }
 
@@ -76,4 +76,28 @@ footer a {
   &:hover {
     background-color: rgba(0,0,0,0.1);
   }
+}
+
+
+.square {
+  width: 20%;
+  padding-bottom: 20%;
+  position: relative;
+}
+
+.square__content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+button {
+  padding: 0.75em 1em;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  border: none;
+  background: rgba(0,0,0,0.1);
+  cursor: pointer;
 }

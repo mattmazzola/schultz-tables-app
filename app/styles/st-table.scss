@@ -1,0 +1,21 @@
+.st-table {
+  flex: 1;
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(5, 1fr);
+  border: 1px solid black;
+}
+.st-table--completed {
+  .st-table__cell {
+    cursor: not-allowed;
+  }
+}
+
+.st-table__cell {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: bold;
+  cursor: pointer;
+}
