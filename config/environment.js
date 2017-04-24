@@ -4,6 +4,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'schultz-tables-app',
+    podModulePrefix: 'schultz-tables-app/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
