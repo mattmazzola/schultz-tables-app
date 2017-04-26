@@ -4,8 +4,13 @@
 <nav>
   {{#link-to "index"}}Home{{/link-to}}
   {{#link-to "scores"}}Scores{{/link-to}}
-  {{#link-to "users"}}Profile{{/link-to}}
-  {{#link-to "login"}}Login{{/link-to}}
+  
+  {{#if session.isAuthenticated}}
+    {{#link-to "users"}}Profile{{/link-to}}
+    <button type="button" {{action 'invalidateSession'}}>Logout</button>
+  {{else}}
+    {{#link-to 'login'}}Login{{/link-to}}
+  {{/if}}
 </nav>
 <main>
 {{outlet}}
