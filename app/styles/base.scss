@@ -49,12 +49,29 @@ nav > a {
   text-decoration: none;
   color: white;
 
+  &.active {
+    background-color: rgba(0,0,0,0.1)
+  }
+
   &:active {
     color: white;
   }
 
-  &:hover {
-    background-color: rgba(0,0,0,0.1)
+  &:hover:not(.active) {
+    background-color: rgba(0,0,0,0.05)
+  }
+}
+
+nav > a.userphoto {
+  display: flex;
+  padding: 0;
+  
+  .username {
+    padding: 1em 1.5em;
+  }
+
+  img {
+    height: 100%;
   }
 }
 

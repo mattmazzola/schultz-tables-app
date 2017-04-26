@@ -1,1 +1,5 @@
-<h2>Users/:id</h2>
+<h2>{{sessionAccount.userAuthData.name}}</h2>
+
+<div>
+  <button type="button" {{action 'invalidateSession'}}>Logout</button>
+</div>

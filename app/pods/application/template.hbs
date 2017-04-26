@@ -6,8 +6,12 @@
   {{#link-to "scores"}}Scores{{/link-to}}
   
   {{#if session.isAuthenticated}}
-    {{#link-to "users"}}Profile{{/link-to}}
-    <button type="button" {{action 'invalidateSession'}}>Logout</button>
+    {{#link-to "users.user" sessionAccount.userAuthData.id class="userphoto"}}
+      <span class="username">{{sessionAccount.userAuthData.name}}</span>
+      <div>
+        <img src={{sessionAccount.userAuthData.picture}} alt={{sessionAccount.userAuthData.name}} />
+      </div>
+    {{/link-to}}
   {{else}}
     {{#link-to 'login'}}Login{{/link-to}}
   {{/if}}

@@ -10,7 +10,7 @@ Router.map(function() {
   this.route('scores');
 
   this.route('users', function() {
-    this.route('user');
+    this.route('user', { path: ':id'});
   });
   this.route('login');
 });
