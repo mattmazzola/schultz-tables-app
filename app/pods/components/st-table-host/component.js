@@ -46,7 +46,7 @@ export default Ember.Component.extend({
   },
 
   generateTable(tableConfig) {
-    const length = tableConfig.size ** 2;
+    const length = tableConfig.size * tableConfig.size;
     const gridSizeArray = Array(length).fill(0);
     const symbols = gridSizeArray.map((_, i) => i + 1);
     const randomSymbols = this.randomize(symbols);
@@ -105,7 +105,9 @@ export default Ember.Component.extend({
       const expectedSymbol = this.get('expectedSymbol');
       const correct = expectedSymbol == cell.text;
 
-      if (correct) {
+      const isTableCompleted = isExpectingLastSymbol && correct;
+
+      if (correct && !isTableCompleted) {
         this.incrementProperty('expectedSymbolIndex')
       }
 
@@ -117,7 +119,6 @@ export default Ember.Component.extend({
 
       this.get('userSequence').pushObject(selection);
 
-      const isTableCompleted = isExpectingLastSymbol && correct;
       if (isTableCompleted) {
         this.set('isTableCompleted', true)
         const duration = this.get('userSequence')[this.get('userSequence').length - 1].time - this.get('startTime');
