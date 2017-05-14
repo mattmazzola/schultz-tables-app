@@ -36,7 +36,7 @@ export default Oauth2Bearer.extend({
           error: Ember.run.bind(null, reject)
         });
       }).then((facebookUser) => {
-        facebookUser.accessToken = accessToken;
+        facebookUser.access_token = accessToken;
         facebookUser.picture = facebookUser.picture.data.url;
         return facebookUser;
       });
