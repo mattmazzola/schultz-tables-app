@@ -4,7 +4,7 @@
 <nav>
   {{#link-to "index"}}Home{{/link-to}}
   {{#link-to "scores"}}Scores{{/link-to}}
-  
+  {{#link-to "users.index"}}Users{{/link-to}}
   {{#if session.isAuthenticated}}
     {{#link-to "users.user" sessionAccount.userAuthData.id class="userphoto"}}
       <span class="username">{{sessionAccount.userAuthData.name}}</span>
@@ -20,5 +20,5 @@
 {{outlet}}
 </main>
 <footer class="center">
-    Schultz Tables - {{#link-to "index"}}Home{{/link-to}} - {{#link-to "scores"}}Scores{{/link-to}} - {{#link-to "users"}}Profile{{/link-to}}
+    Schultz Tables - {{#link-to "index"}}Home{{/link-to}} - {{#link-to "scores"}}Scores{{/link-to}} - {{#link-to "users.index"}}Users{{/link-to}}
 </footer>
