@@ -39,6 +39,9 @@ module.exports = function(environment) {
       providers: {
         'facebook-oauth2implicit': {
           apiKey: '1303677903083425'
+        },
+        'azure-aad-b2c-oauth2implicit': {
+          clientId: 'ccd73327-4b0e-4684-ba69-4838471bfa27'
         }
       }
     }

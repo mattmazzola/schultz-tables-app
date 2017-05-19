@@ -20,18 +20,12 @@ export default Ember.Service.extend({
 
     const userPromise = new Ember.RSVP.Promise(resolve => {
       if (userAuthData.id) {
-        // Convert snake_case properties to cameCase properties
-        const camelizedUser = Object.keys(userAuthData).reduce((newObj, key) => {
-          const camelizedKey = Ember.String.camelize(key)
-          newObj[camelizedKey] = userAuthData[key]
-          return newObj
-        }, {})
-
-        // Set manual properties not automatically set by authData by 
-        camelizedUser.minAgeRange = userAuthData.age_range.min
-        camelizedUser.providerId = userAuthData.id
-
-        const newUser = store.createRecord('user', camelizedUser)
+        const newUserProperties = {
+          id: userAuthData.id,
+          email: userAuthData.email,
+          name: userAuthData.name
+        };
+        const newUser = store.createRecord('user', newUserProperties)
         const newUserPromise = newUser.save()
           .catch(error => {
             return store.find('user', userAuthData.id)
