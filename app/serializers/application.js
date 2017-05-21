@@ -6,16 +6,10 @@ export default DS.RESTSerializer.extend({
     Object.assign(hash, newHash)
   },
 
-  normalizeSaveResponse(store, primaryModelClass, payload, id, requestType) {
-    let normalizedRootKey = this.payloadKeyFromModelName(primaryModelClass.modelName);
-
-    return this.normalizeSingleResponse(store, primaryModelClass, { [normalizedRootKey]: payload }, id, requestType);
-  },
-
-  normalizeFindRecordResponse(store, primaryModelClass, payload, id, requestType) {
+  normalizeSingleResponse(store, primaryModelClass, payload, id, requestType) {
     let normalizedRootKey = this.payloadKeyFromModelName(primaryModelClass.modelName);
     
-    return this.normalizeSingleResponse(store, primaryModelClass, { [normalizedRootKey]: payload }, id, requestType);
+    return this._super(store, primaryModelClass, { [normalizedRootKey]: payload }, id, requestType);
   },
 
   normalizeArrayResponse(store, primaryModelClass, payload, id, requestType) {

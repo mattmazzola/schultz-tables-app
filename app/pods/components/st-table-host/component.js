@@ -38,23 +38,33 @@ export default Ember.Component.extend({
   generateTableConfig() {
     return {
       symbols: 'numbers',
-      size: 5,
-      font: 'standard',
-      fontColor: 'black',
-      backgroundColor: 'white'
+      width: 5,
+      height: 5,
+      properties: [
+        { key: 'font', value: 'standard' },
+        { key: 'fontColor', value: 'black' },
+        { key: 'backgroundColor', value: 'white' }
+      ]
     }
   },
 
-  generateTable(tableConfig) {
-    const length = tableConfig.size * tableConfig.size;
+  generateSymbols(tableConfig) {
+    const length = tableConfig.width * tableConfig.height;
     const gridSizeArray = Array(length).fill(0);
     const symbols = gridSizeArray.map((_, i) => i + 1);
     const randomSymbols = this.randomize(symbols);
 
-    const cells = randomSymbols.map((symbol, i) => {
+    return {
+      expectedSequence: symbols,
+      randomizedSequence: randomSymbols
+    }
+  },
+
+  generateTable(tableConfig, sequence) {
+    const cells = sequence.randomizedSequence.map((symbol, i) => {
       const number = i + 1;
-      const x = i % 5 + 1;
-      const y = Math.floor(i / 5) + 1;
+      const x = i % tableConfig.width + 1;
+      const y = Math.floor(i / tableConfig.width) + 1;
 
       return {
         x,
@@ -65,7 +75,7 @@ export default Ember.Component.extend({
     });
 
     return {
-      expectedSequence: symbols,
+      expectedSequence: sequence.expectedSequence,
       cells
     }
   },
@@ -82,12 +92,19 @@ export default Ember.Component.extend({
   actions: {
     start() {
       this.reset();
-      console.log('start');
-      this.set('startTime', (new Date()).getTime());
-      const tableConfig = this.generateTableConfig();
-      const table = this.generateTable(tableConfig);
-      this.set('table', table);
-      console.log(table);
+      this.get('onStart')()
+        .then(signedStartTime => {
+          this.set('signedStartTime', signedStartTime);
+          console.log('start');
+          this.set('startTime', (new Date()).toJSON());
+          const tableConfig = this.generateTableConfig();
+          this.set('tableConfig', tableConfig)
+          const sequence = this.generateSymbols(tableConfig);
+          this.set('tableSequence', sequence);
+          const table = this.generateTable(tableConfig, sequence);
+          this.set('table', table);
+          console.log(table);
+        });
     },
 
     clear() {
@@ -113,7 +130,7 @@ export default Ember.Component.extend({
 
       const selection = {
         correct,
-        time: (new Date()).getTime(),
+        time: (new Date()).toJSON(),
         cell
       };
 
@@ -121,8 +138,22 @@ export default Ember.Component.extend({
 
       if (isTableCompleted) {
         this.set('isTableCompleted', true)
-        const duration = this.get('userSequence')[this.get('userSequence').length - 1].time - this.get('startTime');
+        const endTime = this.get('userSequence')[this.get('userSequence').length - 1].time;
+        const duration = new Date(endTime) - new Date(this.get('startTime'));
         this.set('duration', duration / 1000);
+
+        this.get('onTableCompleted')({
+          signedStartTime: this.get('signedStartTime'),
+          startTime: this.get('startTime'),
+          endTime,
+          duration,
+          userSequence: this.get('userSequence'),
+          expectedSequence: this.get('tableSequence.expectedSequence'),
+          randomizedSequence: this.get('tableSequence.randomizedSequence'),
+          tableWidth: this.get('tableConfig.width'),
+          tableHeight: this.get('tableConfig.height'),
+          tableProperties: this.get('tableConfig.properties')
+        })
       }
     }
   }
