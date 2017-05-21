@@ -19,23 +19,9 @@ export default Ember.Service.extend({
     const store = this.get('store')
 
     const userPromise = new Ember.RSVP.Promise(resolve => {
-      if (userAuthData.id) {
-        const newUserProperties = {
-          id: userAuthData.id,
-          email: userAuthData.email,
-          name: userAuthData.name
-        };
-        const newUser = store.createRecord('user', newUserProperties)
-        const newUserPromise = newUser.save()
-          .catch(error => {
-            return store.find('user', userAuthData.id)
-          })
-        resolve(newUserPromise)
-      }
-      else {
-        resolve(null)
-      }
-    })
+      const userPromise = userAuthData.id ? store.find('user', userAuthData.id) : null;
+      resolve(userPromise);
+    });
 
     return DS.PromiseObject.create({
       promise: userPromise

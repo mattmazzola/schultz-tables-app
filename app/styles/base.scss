@@ -118,3 +118,12 @@ button {
   background: rgba(0,0,0,0.1);
   cursor: pointer;
 }
+
+.user {
+  display: block;
+  padding: 1em;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.05);
+  }
+}

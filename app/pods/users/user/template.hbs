@@ -1,5 +1,10 @@
-<h2>{{sessionAccount.userAuthData.name}}</h2>
+<div class="container">
+  <h2>{{model.name}}</h2>
+  <p>{{model.email}}</p>
 
-<div>
-  <button type="button" {{action 'invalidateSession'}}>Logout</button>
+  {{#if isCurrentUser}}
+  <div>
+    <button type="button" {{action 'invalidateSession'}}>Logout</button>
+  </div>
+  {{/if}}
 </div>
