@@ -6,16 +6,14 @@
 <div class="st-table-host__table-container-outer">
   <div class="st-table-host__table-container">
     {{#if table}}
-    <div>
-      <h3>Expected Symbol: {{expectedSymbol}} Duration: {{duration}}</h3>
-    </div>
-    <div class="st-table {{if isTableCompleted 'st-table--completed'}}">
-      {{#each table.cells as |cell i|}}
-        <div class="st-table__cell" {{action "selectCell" cell}}>
-          {{cell.text}}
-        </div>
-      {{/each}}
-    </div>
+      <h3>Expected Symbol: <span class="data">{{expectedSymbol}}</span>{{#if isTableCompleted 'st-table--completed'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration: <span class="data">{{duration}}</span>{{/if}}</h3>
+      <div class="st-table {{if isTableCompleted 'st-table--completed'}}">
+        {{#each table.cells as |cell i|}}
+          <div class="st-table__cell" {{action "selectCell" cell}}>
+            {{cell.text}}
+          </div>
+        {{/each}}
+      </div>
     {{/if}}
   </div>
 </div>
