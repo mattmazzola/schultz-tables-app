@@ -1,18 +1,16 @@
 <header>
-    <h1 class="center">Schultz Tables</h1>
+  <h1 class="center">Schultz Tables</h1>
+  <nav>
+    {{#link-to "index"}}Home{{/link-to}}
+    {{#link-to "scores"}}Scores{{/link-to}}
+    {{#link-to "users.index"}}Users{{/link-to}}
+    {{#if session.isAuthenticated}}
+      {{#link-to "users.user" sessionAccount.userAuthData.id class="userphoto"}}
+        <span class="username">{{sessionAccount.userAuthData.name}}</span>
+      {{/link-to}}
+    {{/if}}
+  </nav>
 </header>
-<nav>
-  {{#link-to "index"}}Home{{/link-to}}
-  {{#link-to "scores"}}Scores{{/link-to}}
-  {{#link-to "users.index"}}Users{{/link-to}}
-  {{#if session.isAuthenticated}}
-    {{#link-to "users.user" sessionAccount.userAuthData.id class="userphoto"}}
-      <span class="username">{{sessionAccount.userAuthData.name}}</span>
-    {{/link-to}}
-  {{else}}
-    {{#link-to 'login'}}Login{{/link-to}}
-  {{/if}}
-</nav>
 <main>
 {{outlet}}
 </main>
