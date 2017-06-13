@@ -8,6 +8,6 @@ const {
 export default DS.Model.extend({
   user: belongsTo('user', { inverse: null }),
   duration: attr('string'),
-  tableLayoutId: attr('string'),
-  tableTypeId: attr('string')
+  durationMilliseconds: attr('number'),
+  details: belongsTo('score-detail', { inverse: null })
 });

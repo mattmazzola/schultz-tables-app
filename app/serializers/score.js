@@ -6,7 +6,8 @@ export default ApplicationSerializer.extend({
     // resourceHash.user = { id: resourceHash.userId };
 
     resourceHash.links = {
-      user: `/api/users/${resourceHash.userId}`
+      user: `/api/users/${resourceHash.userId}`,
+      scoreDetails: `/api/scores/${resourceHash.scoreDetailsId}/details`
     }
 
     return this._super(modelClass, resourceHash, prop);

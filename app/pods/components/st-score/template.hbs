@@ -1,0 +1,26 @@
+<div>
+  <div class="st-score__header" {{action "toggle"}}>
+    {{score.user.name}} - {{score.durationMilliseconds}}
+  </div>
+  {{#if isOpen}}
+  <div class="st-score__body">
+    <div>
+      Size: {{score.details.tableType.width}}w &times; {{score.details.tableType.height}}h
+    </div>
+    <div>
+      Properties: 
+      <ul>
+        {{#each score.details.tableType.properties as |property|}}
+        <li>{{property.key}}: {{property.value}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    Sequence:
+    <ol>
+    {{#each score.details.sequence as |sequence|}}
+      <li>{{sequence.correct}} - {{sequence.cell.text}} - {{sequence.time}}</li>
+    {{/each}}
+    </ol>
+  </div>
+  {{/if}}
+</div>
