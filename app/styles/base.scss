@@ -123,16 +123,15 @@ button {
   box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.2);
 }
 
-.user {
-  display: block;
-  padding: 1em;
-
-  &:hover {
-    background-color: rgba(0,0,0,0.05);
-  }
+.home-link {
+  text-decoration: none;
+  color: inherit;
 }
 
-
 .list > * {
-  margin-bottom: 1em;
+  margin-bottom: .75em;
+}
+
+ol, ul {
+  margin: 0;
 }
