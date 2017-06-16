@@ -21,4 +21,8 @@
 
 .st-score__body {
   padding: 1em;
+  padding-top: 0;
+  display: grid;
+  grid: auto / auto 1fr;
+  grid-gap: 1rem;
 }

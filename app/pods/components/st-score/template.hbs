@@ -1,26 +1,38 @@
 <div>
   <div class="st-score__header" {{action "toggle"}}>
-    {{score.user.name}} - {{score.durationMilliseconds}}
+    <div class="st-score__header-name">
+      {{score.user.name}}
+    </div>
+    <div class="st-score__header-duration">
+     {{durationAsSeconds}} s
+    </div>
   </div>
   {{#if isOpen}}
-  <div class="st-score__body">
-    <div>
-      Size: {{score.details.tableType.width}}w &times; {{score.details.tableType.height}}h
-    </div>
-    <div>
-      Properties: 
-      <ul>
-        {{#each score.details.tableType.properties as |property|}}
-        <li>{{property.key}}: {{property.value}}</li>
+    <div class="st-score__body">
+      {{#unless score.details.isLoaded}}
+      <div class="st-score__body-loading center">Loading...</div>
+      {{else}}
+        <div>Size:</div>
+        <div>{{score.details.tableType.width}}w &times; {{score.details.tableType.height}}h</div>
+        <div>Properties:</div>
+        <div> 
+          <ul>
+            {{#each score.details.tableType.properties as |property|}}
+            <li>{{property.key}}: {{property.value}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <div>Start Time:</div>
+        <div>{{moment-format score.details.startTime 'MMMM D, h:mm:ss.SSS a'}}</div>
+        <div>End Time:</div>
+        <div>{{moment-format score.details.endTime 'MMMM D, h:mm:ss.SSS a'}}</div>
+        Sequence:
+        <ol>
+        {{#each score.details.sequence as |sequence|}}
+          <li>{{sequence.correct}} - {{sequence.cell.text}} - {{moment-format sequence.time 'ss.SSS'}} - {{moment-format score.details.startTime 'ss.SSS'}}</li>
         {{/each}}
-      </ul>
+        </ol>
+      {{/unless}}
     </div>
-    Sequence:
-    <ol>
-    {{#each score.details.sequence as |sequence|}}
-      <li>{{sequence.correct}} - {{sequence.cell.text}} - {{sequence.time}}</li>
-    {{/each}}
-    </ol>
-  </div>
   {{/if}}
 </div>

@@ -5,6 +5,8 @@ const {
 } = DS;
 
 export default DS.Model.extend({
+  startTime: attr(),
+  endTime: attr('string'),
   sequence: attr(),
   tableLayout: attr(),
   tableType: attr()
