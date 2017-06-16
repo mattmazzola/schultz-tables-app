@@ -1,0 +1,23 @@
+.st-user {
+  background: white;
+  font-size: 1.5rem;
+}
+
+.st-user__header {
+  padding: 1em;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+
+.st-user__header-name {
+  flex: 1
+}
+
+.st-user__body {
+  padding: 1em;
+  padding-top: 0;
+  display: grid;
+  grid: auto / auto 1fr;
+  grid-gap: 1rem;
+}
