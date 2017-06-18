@@ -6,6 +6,12 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+    minifyJS: {
+      enabled: false
+    },
+    minifyCSS: {
+      enabled: false
+    },
     fingerprint: {
       prepend: 'https://schultztables.blob.core.windows.net/client/'
     }
