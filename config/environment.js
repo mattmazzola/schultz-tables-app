@@ -67,7 +67,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = '/client/index.html';
+    ENV.rootURL = '/client';
   }
 
   return ENV;
