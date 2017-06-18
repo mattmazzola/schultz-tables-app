@@ -31,7 +31,7 @@ export default Ember.Service.extend({
   saveScore(scoreInput) {
     const accessToken = this.get('session').get('data.authenticated.access_token');
 
-    return fetch(`${config.apiUrl}/api/scores/scores`, {
+    return fetch(`${config.apiUrl}/api/scores`, {
       method: 'POST',
       headers: {
         Accepts: 'application-json',
