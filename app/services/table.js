@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import fetch from "ember-network/fetch";
+import config from '../config/environment';
 
 const {
   inject
@@ -11,7 +12,7 @@ export default Ember.Service.extend({
   fetchStartTime() {
     const accessToken = this.get('session').get('data.authenticated.access_token');
 
-    return fetch('https://localhost:44311/api/scores/start', {
+    return fetch(`${config.apiUrl}/api/scores/start`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${accessToken}`
@@ -30,7 +31,7 @@ export default Ember.Service.extend({
   saveScore(scoreInput) {
     const accessToken = this.get('session').get('data.authenticated.access_token');
 
-    return fetch('https://localhost:44311/api/scores', {
+    return fetch(`${config.apiUrl}/api/scores/scores`, {
       method: 'POST',
       headers: {
         Accepts: 'application-json',
