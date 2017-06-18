@@ -13,7 +13,7 @@ module.exports = function (defaults) {
       enabled: false
     },
     fingerprint: {
-      prepend: 'https://schultztables.blob.core.windows.net/client/'
+      prepend: 'https://schultztables.blob.core.windows.net/'
     }
   });
 
