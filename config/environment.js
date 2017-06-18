@@ -19,6 +19,8 @@ module.exports = function(environment) {
       }
     },
 
+    apiUrl: 'https://localhost:44311',
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -68,6 +70,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.rootURL = '/client';
+    ENV.apiUrl = 'https://schultztables.azurewebsites.net';
   }
 
   return ENV;
