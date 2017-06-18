@@ -3,9 +3,12 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+    fingerprint: {
+      prepend: 'https://schultztables.blob.core.windows.net/client/'
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
