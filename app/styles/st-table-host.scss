@@ -18,13 +18,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
 
-  h3 {
-    font-size: 1.5rem;
-    color: #999;
+.st-table-host_metadata {
+  font-size: 1.5rem;
+  color: #999;
+  font-weight: bold;
+  display: flex;
+  margin: 0.5em 0;
 
-    .data {
-      color: black;
-    }
+  dd {
+    color: black;
+    margin-left: 0.5em;
+    margin-right: 2em;
   }
 }
