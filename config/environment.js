@@ -69,7 +69,6 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = '/client';
     ENV.apiUrl = 'https://schultztables.azurewebsites.net';
   }
 

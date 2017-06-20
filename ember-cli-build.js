@@ -11,9 +11,6 @@ module.exports = function (defaults) {
     },
     minifyCSS: {
       enabled: false
-    },
-    fingerprint: {
-      prepend: 'https://schultztables.blob.core.windows.net/'
     }
   });
 
