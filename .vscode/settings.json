@@ -5,5 +5,12 @@
     "editor.renderIndentGuides": true,
     "editor.renderLineHighlight": "all",
     "editor.renderControlCharacters": true,
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
+
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "tmp": true,
+      "dist": true
+    }
 }
