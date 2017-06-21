@@ -26,3 +26,8 @@
   grid: auto / auto 1fr;
   grid-gap: 1rem;
 }
+
+.st-score-sequence {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}

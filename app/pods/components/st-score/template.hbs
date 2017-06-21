@@ -27,11 +27,11 @@
         <div>End Time:</div>
         <div>{{moment-format score.details.endTime 'MMMM D, h:mm:ss.SSS a'}}</div>
         Sequence:
-        <ol>
+        <div class="st-score-sequence">
         {{#each score.details.sequence as |sequence|}}
-          <li>{{sequence.correct}} - {{sequence.cell.text}} - {{moment-format sequence.time 'ss.SSS'}} - {{moment-format score.details.startTime 'ss.SSS'}}</li>
+          <div>{{#if sequence.correct}}-{{else}}&times;{{/if}}</div><div>{{sequence.cell.text}}</div><div>+{{st-time-difference sequence.time score.details.startTime}}</div>
         {{/each}}
-        </ol>
+        </div>
       {{/unless}}
     </div>
   {{/if}}
