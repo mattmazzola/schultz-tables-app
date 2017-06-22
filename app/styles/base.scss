@@ -42,6 +42,24 @@ header {
 nav {
   display: flex;
   justify-content: center;
+
+  .link {
+    display: grid;
+    grid-template-columns: [full-start] 20px [icon-start] 40px [icon-end] 20px [full-end];
+    grid-template-rows: 40px;
+
+    .icon {
+      grid-row: 1;
+      grid-column: icon;
+      text-align: center;
+    }
+
+    .label {
+      grid-row: 2;
+      grid-column: full;
+      text-align: center;
+    }
+  }
 }
 
 a {
@@ -51,8 +69,8 @@ a {
 }
 
 nav > a {
-  padding: 1em 1.5em;
-  font-size: 1.2em;
+  padding: 0.75em 1em;
+  font-size: 1rem;
   text-decoration: none;
   color: white;
   border-bottom: 3px solid transparent;

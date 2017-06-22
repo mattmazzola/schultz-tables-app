@@ -1,12 +1,22 @@
 <header>
   <h1 class="center">{{#link-to "index" classNames="home-link"}}Schultz Tables{{/link-to}}</h1>
   <nav>
-    {{#link-to "index"}}Home{{/link-to}}
-    {{#link-to "scores"}}Scores{{/link-to}}
-    {{#link-to "users.index"}}Users{{/link-to}}
+    {{#link-to "index" classNames="link"}}
+      <div class="icon">Icon</div>
+      <div class="label">Home</div>
+    {{/link-to}}
+    {{#link-to "scores" classNames="link"}}
+      <div class="icon">Icon</div>
+      <div class="label">Scores</div>
+    {{/link-to}}
+    {{#link-to "users.index" classNames="link"}}
+      <div class="icon">Icon</div>
+      <div class="label">Users</div>
+    {{/link-to}}
     {{#if session.isAuthenticated}}
-      {{#link-to "users.user" sessionAccount.userAuthData.id class="userphoto"}}
-        <span class="username">{{sessionAccount.userAuthData.name}}</span>
+      {{#link-to "users.user" sessionAccount.userAuthData.id classNames="link"}}
+        <div class="icon">Icon</div>
+        <div class="label">Users</div>
       {{/link-to}}
     {{/if}}
   </nav>
