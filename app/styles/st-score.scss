@@ -4,10 +4,12 @@
 }
 
 .st-score__header {
-  padding: 1em;
+  padding: 0.8em 1em;
   cursor: pointer;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template: auto / 1fr min-content min-content;
+  grid-gap: 1em;
+  white-space: nowrap;
 }
 
 .st-score__header-name {
@@ -16,7 +18,7 @@
 
 .st-score__header-duration {
   text-align: right;
-  width: 10em;
+  width: 6em;
 }
 
 .st-score__body {
@@ -24,10 +26,25 @@
   padding-top: 0;
   display: grid;
   grid: auto / auto 1fr;
-  grid-gap: 1rem;
+  grid-gap: 0.5em 1em;
+  justify-items: left;
+  
+  color: rgba(0,0,0,0.7);
 }
 
 .st-score-sequence {
   display: grid;
   grid-template-columns: auto auto auto;
+  grid-gap: 0.2em 0.5em;
+}
+
+
+.correct {
+  vertical-align: sub;
+  color: green;
+}
+
+.incorrect {
+  vertical-align: sub;
+  color: red;
 }
