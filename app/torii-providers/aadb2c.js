@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import Oauth2Bearer from 'torii/providers/oauth2-bearer';
 import {configurable} from 'torii/configuration';
  

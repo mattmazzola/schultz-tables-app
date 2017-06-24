@@ -62,7 +62,6 @@ export default Ember.Component.extend({
 
   generateTable(tableConfig, sequence) {
     const cells = sequence.randomizedSequence.map((symbol, i) => {
-      const number = i + 1;
       const x = i % tableConfig.width + 1;
       const y = Math.floor(i / tableConfig.width) + 1;
 
@@ -95,7 +94,6 @@ export default Ember.Component.extend({
       this.get('onStart')()
         .then(signedStartTime => {
           this.set('signedStartTime', signedStartTime);
-          console.log('start');
           this.set('startTime', (new Date()).toJSON());
           const tableConfig = this.generateTableConfig();
           this.set('tableConfig', tableConfig)
@@ -103,7 +101,6 @@ export default Ember.Component.extend({
           this.set('tableSequence', sequence);
           const table = this.generateTable(tableConfig, sequence);
           this.set('table', table);
-          console.log(table);
         });
     },
 
@@ -112,8 +109,6 @@ export default Ember.Component.extend({
     },
 
     selectCell(cell) {
-      console.log(cell, cell.text);
-
       if (this.get('isTableCompleted')) {
         return;
       }

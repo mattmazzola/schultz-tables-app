@@ -3,7 +3,6 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
  
 export default Ember.Route.extend(ApplicationRouteMixin, {
   sessionAuthenticated() {
-    console.log('sessionAuthenticated');
     this._super();
   }
 });

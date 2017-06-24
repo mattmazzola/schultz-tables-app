@@ -5,7 +5,6 @@ export default Ember.Controller.extend({
 
   actions: {
     loginWithFacebookB2C() {
-      console.log('loginWithFacebookB2C');
       this.get('session').authenticate('authenticator:torii', 'aadb2c');
     }
   }
