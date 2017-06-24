@@ -1,11 +1,22 @@
 <div>
   <div class="st-user__header" {{action "toggle"}}>
+    <div class="st-user-header-icon">
+      <i class="material-icons">person</i>
+    </div>
     <div class="st-user__header-name">
-      {{user.name}} ({{user.email}})
+      {{user.name}}
+    </div>
+    <div class="st-user__header-icon">
+      {{#if isOpen}}
+      <i class="material-icons">keyboard_arrow_up</i>
+      {{else}}
+      <i class="material-icons">keyboard_arrow_down</i>
+      {{/if}}
     </div>
   </div>
   {{#if isOpen}}
     <div class="st-user__body">
+      <div>Email:</div><div>{{user.email}}</div>
       {{#link-to "users.user" user classNames="user"}}Go To Full Profile{{/link-to}}
     </div>
   {{/if}}
