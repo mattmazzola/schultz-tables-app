@@ -29,6 +29,7 @@ module.exports = function(environment) {
     googleFonts: [
       'Open+Sans:300,400,700',
       'PT+Sans:400',
+      'Material+Icons'
     ],
 
     // Set or update content security policies

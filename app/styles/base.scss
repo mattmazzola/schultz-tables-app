@@ -23,6 +23,31 @@ body > .ember-view {
   flex: 1;
 }
 
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
 .center {
   text-align: center;
 }
@@ -79,8 +104,8 @@ nav {
 
   .link {
     display: grid;
-    grid-template-columns: [full-start] 20px [icon-start] 40px [icon-end] 20px [full-end];
-    grid-template-rows: 40px;
+    grid-template-columns: [full-start] 20px [icon-start] $icon-size [icon-end] 20px [full-end];
+    grid-template-rows: $icon-size;
 
     .icon {
       grid-row: 1;
@@ -103,7 +128,7 @@ a {
 }
 
 nav > a {
-  padding: 0.75em 1em;
+  padding: 0.75em 0.5em;
   font-size: 1rem;
   text-decoration: none;
   color: white;
@@ -112,7 +137,7 @@ nav > a {
 
   &.active {
     background-color: rgba(0,0,0,0.1);
-    border-bottom-color: black;
+    border-bottom-color: rgba(0,0,0,0.7);
   }
 
   &:active {
