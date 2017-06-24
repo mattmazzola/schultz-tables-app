@@ -47,6 +47,12 @@ header {
 
 .home-link {
   display: flex;
+
+  .label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .simulatedIcon {
