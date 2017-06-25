@@ -5,6 +5,8 @@ const {
 } = Ember;
 
 export default Ember.Component.extend({
+  audio: Ember.inject.service(),
+
   classNames: 'st-table-host',
   startTime: null,
   duration: null,
@@ -12,6 +14,36 @@ export default Ember.Component.extend({
   isTableCompleted: false,
   expectedSymbolIndex: 0,
   userSequence: [],
+
+  init() {
+    this._super();
+    this.set('correctSound', this._createCorrectSound());
+    this.set('incorrectSound', this._createIncorrectSound());
+  },
+
+  _createCorrectSound() {
+    const audio = this.get('audio');
+    const correctSound = audio.createOscillator({ name: 'kick' });
+    const osc = correctSound.getConnection('audioSource');
+    const gain = correctSound.getConnection('gain');
+
+    osc.onPlayRamp('frequency').from(150).to(0.01).in(0.1);
+    gain.onPlayRamp('gain').from(1).to(0.01).in(0.1);
+
+    return correctSound;
+  },
+
+  _createIncorrectSound() {
+    const audio = this.get('audio');
+    const incorrectSound = audio.createOscillator({ name: 'incorrect' });
+    const osc = incorrectSound.getConnection('audioSource');
+    const gain = incorrectSound.getConnection('gain');
+
+    osc.onPlayRamp('frequency').from(450).to(0.01).in(0.1);
+    gain.onPlayRamp('gain').from(1).to(0.01).in(0.1);
+
+    return incorrectSound;
+  },
 
   randomize(xs) {
     let unrandomized = xs.slice(0);
@@ -118,6 +150,9 @@ export default Ember.Component.extend({
       const correct = expectedSymbol == cell.text;
 
       const isTableCompleted = isExpectingLastSymbol && correct;
+
+      const sound = correct ? this.get('correctSound') : this.get('incorrectSound');
+      sound.playFor(0.2);
 
       if (correct && !isTableCompleted) {
         this.incrementProperty('expectedSymbolIndex')
