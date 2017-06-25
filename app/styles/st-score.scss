@@ -24,11 +24,18 @@
   padding: 1em;
   padding-top: 0;
   display: grid;
-  grid: auto / auto 1fr;
   grid-gap: 0.5em 1em;
   justify-items: left;
-  
-  color: rgba(0,0,0,0.7);
+
+  .value {
+    color: rgba(0,0,0,0.7);
+  } 
+}
+
+@media (min-width: 500px) {
+  .st-score__body {
+    grid: auto / auto 1fr;
+  }
 }
 
 .st-score-sequence {
