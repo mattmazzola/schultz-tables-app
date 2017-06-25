@@ -165,7 +165,7 @@ nav > a.userphoto {
 main {
   padding: 2em 0;
   display: grid;
-  grid-template-columns: [full-start] minmax(1em, 1fr) [main-start] minmax(340px, 50vw) [main-end] minmax(1em, 1fr) [full-end];
+  grid-template-columns: [full-start] minmax(1em, 1fr) [main-start] minmax($main-column-min-width, 50vw) [main-end] minmax(1em, 1fr) [full-end];
 }
 
 main > * {

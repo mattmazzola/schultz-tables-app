@@ -15,8 +15,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   background: white;
+}
+
+@media (min-width: 800px) {
+  .st-table__cell {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .st-table__cell {
+    font-size: 4rem;
+  }
 }

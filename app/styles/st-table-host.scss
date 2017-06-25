@@ -1,6 +1,8 @@
+@import 'variables.scss';
+
 .st-table-host {
   display: grid;
-  grid-template-rows: auto minmax(340px, 50vw) auto;
+  grid-template-rows: auto minmax($main-column-min-width, 50vw) auto;
 }
 
 .st-table-host__controls {
@@ -19,6 +21,12 @@
     color: black;
     margin-left: 0.5em;
     margin-right: 2em;
+  }
+}
+
+@media (max-width: 400px) {
+  .st-table-host_metadata {
+    font-size: 1rem;
   }
 }
 
