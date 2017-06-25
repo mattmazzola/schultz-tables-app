@@ -12,6 +12,8 @@ export default Ember.Component.extend({
   duration: null,
   table: null,
   isTableCompleted: false,
+  isSoundEnabled: true,
+  playSoundOnCorrect: false,
   expectedSymbolIndex: 0,
   userSequence: [],
 
@@ -151,8 +153,14 @@ export default Ember.Component.extend({
 
       const isTableCompleted = isExpectingLastSymbol && correct;
 
-      const sound = correct ? this.get('correctSound') : this.get('incorrectSound');
-      sound.playFor(0.2);
+      if (this.get('isSoundEnabled')) {
+        if (correct && this.get('playSoundOnCorrect')) {
+          this.get('correctSound').playFor(0.3);
+        }
+        else if(!correct) {
+          this.get('incorrectSound').playFor(0.3);
+        }
+      }
 
       if (correct && !isTableCompleted) {
         this.incrementProperty('expectedSymbolIndex')
