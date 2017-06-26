@@ -165,7 +165,25 @@ nav > a.userphoto {
 main {
   padding: 2em 0;
   display: grid;
-  grid-template-columns: [full-start] minmax(1em, 1fr) [main-start] minmax($main-column-min-width, 50vw) [main-end] minmax(1em, 1fr) [full-end];
+  grid-template-columns: [full-start] minmax(1em, 1fr) [main-start] minmax($main-column-min-width, 90vw) [main-end] minmax(1em, 1fr) [full-end];
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+  main {
+    grid-template-columns: [full-start] minmax(1em, 1fr) [main-start] minmax($main-column-min-width, 80vw) [main-end] minmax(1em, 1fr) [full-end];
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1200px) {
+  main {
+    grid-template-columns: [full-start] minmax(1em, 1fr) [main-start] minmax($main-column-min-width, 65vw) [main-end] minmax(1em, 1fr) [full-end];
+  }
+}
+
+@media (min-width: 1201px) {
+  main {
+    grid-template-columns: [full-start] minmax(1em, 1fr) [main-start] minmax($main-column-min-width, 50vw) [main-end] minmax(1em, 1fr) [full-end];
+  }
 }
 
 main > * {

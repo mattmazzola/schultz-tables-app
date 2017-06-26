@@ -2,7 +2,26 @@
 
 .st-table-host {
   display: grid;
-  grid-template-rows: auto minmax($main-column-min-width, 50vw) auto;
+  grid-template-rows: min-content minmax($main-column-min-width, 90vw);
+}
+
+
+@media (min-width: 501px) and (max-width: 800px) {
+  .st-table-host {
+    grid-template-rows: min-content  minmax($main-column-min-width, 80vw);
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1200px) {
+  .st-table-host {
+    grid-template-rows: min-content  minmax($main-column-min-width, 65vw);
+  }
+}
+
+@media (min-width: 1201px) {
+  .st-table-host {
+    grid-template-rows: min-content  minmax($main-column-min-width, 50vw);
+  }
 }
 
 .st-table-host__controls {
