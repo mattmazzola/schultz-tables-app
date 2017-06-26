@@ -21,11 +21,12 @@
       <div><i class="material-icons">border_all</i> Size:</div>
       <div class="value">{{score.details.tableType.width}}w &times; {{score.details.tableType.height}}h</div>
       <div><i class="material-icons">format_list_bulleted</i> Properties:</div>
-      <ul class="value">
+      <div class="st-score-properties value">
         {{#each score.details.tableType.properties as |property|}}
-        <li>{{property.key}}: {{property.value}}</li>
+        <div>{{property.key}}:</div>
+        <div>{{property.value}}</div>
         {{/each}}
-      </ul>
+      </div>
       <div><i class="material-icons">access_time</i> Start Time:</div>
       <div class="value">{{moment-format score.details.startTime 'MMMM D, h:mm:ss.SSS a'}}</div>
       <div><i class="material-icons">access_time</i> End Time:</div>

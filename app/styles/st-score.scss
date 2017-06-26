@@ -32,10 +32,29 @@
   } 
 }
 
+@media (max-width: 800px) {
+  .st-score__body {
+    .value {
+      padding-left: 1.25em;
+    }
+  }
+}
+
 @media (min-width: 800px) {
   .st-score__body {
-    grid: auto / auto 1fr;
+    grid-template: auto / auto 1fr;
   }
+}
+
+.st-score-properties {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0.2em 0.5em;
+}
+
+.st-score-properties > *:nth-child(2n - 1) {
+  justify-content: right;
+  text-align: right;
 }
 
 .st-score-sequence {
