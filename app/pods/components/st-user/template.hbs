@@ -26,6 +26,10 @@
       {{#each user.scores as |score|}}
         <div>{{moment-format score.startTime 'MMMM D, hh:mm:ss a'}} - {{score.durationMilliseconds}}</div>
       {{/each}}
+      <div class="st-user-history">
+        <div>Score History:</div>
+        {{high-charts chartOptions=chartOptions content=chartData}}
+      </div>
     </div>
   {{/if}}
 </div>
