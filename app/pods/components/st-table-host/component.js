@@ -11,6 +11,7 @@ export default Ember.Component.extend({
   startTime: null,
   duration: null,
   table: null,
+  isStarted: false,
   isTableCompleted: false,
   isSoundEnabled: true,
   playSoundOnCorrect: false,
@@ -21,6 +22,7 @@ export default Ember.Component.extend({
     this._super();
     this.set('correctSound', this._createCorrectSound());
     this.set('incorrectSound', this._createIncorrectSound());
+    this.set('previewTable', this.generatePreviewTable());
   },
 
   _createCorrectSound() {
@@ -67,6 +69,10 @@ export default Ember.Component.extend({
     if (this.get('table') && Array.isArray(this.get('table.expectedSequence'))) {
       return this.get('table.expectedSequence')[this.get('expectedSymbolIndex')];
     }
+  }),
+
+  showControls: computed('isTableCompleted', function () {
+
   }),
 
   generateTableConfig() {
@@ -122,13 +128,22 @@ export default Ember.Component.extend({
     this.set('expectedSymbolIndex', 0);
   },
 
+  generatePreviewTable() {
+    const tableConfig = this.generateTableConfig();
+    const sequence = this.generateSymbols(tableConfig);
+    const table = this.generateTable(tableConfig, sequence);
+    return table;
+  },
+
   actions: {
     start() {
       this.reset();
       this.get('onStart')()
         .then(signedStartTime => {
+
           this.set('signedStartTime', signedStartTime);
           this.set('startTime', (new Date()).toJSON());
+          this.set('isStarted', true);
           const tableConfig = this.generateTableConfig();
           this.set('tableConfig', tableConfig)
           const sequence = this.generateSymbols(tableConfig);
@@ -176,6 +191,7 @@ export default Ember.Component.extend({
 
       if (isTableCompleted) {
         this.set('isTableCompleted', true)
+        this.set('isStarted', false);
         const endTime = this.get('userSequence')[this.get('userSequence').length - 1].time;
         const duration = new Date(endTime) - new Date(this.get('startTime'));
         this.set('duration', duration / 1000);

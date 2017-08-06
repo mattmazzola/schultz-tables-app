@@ -1,33 +1,42 @@
 <dl class="st-table-host_metadata">
   <di>Next:</di>
   {{#if table}}
-    <dd>{{expectedSymbol}}</dd>
-    {{#if isTableCompleted 'st-table--completed'}}
-      <di>Duration:</di>
-      <dd>{{duration}}</dd>
-      <di>Done!</di>
-    {{/if}}
-  {{/if}}
+  <dd>{{expectedSymbol}}</dd>
+  {{#if isTableCompleted 'st-table--completed'}}
+  <di>Duration:</di>
+  <dd>{{duration}}</dd>
+  <di>Done!</di>
+  {{/if}} {{/if}}
 </dl>
-{{#if table}}
+<div class="st-table-container">
+  {{#unless isStarted}}
+  <div class="st-table-host__controls">
+    <div class="st-table-host__startbutton">
+      <button type="button" class="button--start button--primary" {{action "start"}}>
+        {{#if isTableCompleted 'st-table--completed'}}
+        <i class="material-icons">replay</i> Re-Start
+        {{else}}
+        <i class="material-icons">play_arrow</i> Start
+        {{/if}}
+      </button>
+    </div>
+  </div>
+  {{/unless}}
+  {{#if table}}
   <div class="st-table {{if isTableCompleted 'st-table--completed'}}">
     {{#each table.cells as |cell i|}}
-      <div class="st-table__cell" {{action "selectCell" cell}}>
-        {{cell.text}}
-      </div>
+    <div class="st-table__cell" {{action "selectCell" cell}}>
+      {{cell.text}}
+    </div>
     {{/each}}
   </div>
-{{else}}
-  <div class="st-table-placeholder">
+  {{else}}
+  <div class="st-table st-table--placeholder">
+    {{#each previewTable.cells as |cell i|}}
+    <div class="st-table__cell">
+      {{cell.text}}
+    </div>
+    {{/each}}
   </div>
-{{/if}}
-
-<div class="st-table-host__controls">
-  <button type="button" class="button--start button--primary" {{action "start"}}>
-    {{#if isTableCompleted 'st-table--completed'}}
-    <i class="material-icons">replay</i> Re-Start
-    {{else}}
-    <i class="material-icons">play_arrow</i> Start
-    {{/if}}
-  </button>
+  {{/if}}
 </div>

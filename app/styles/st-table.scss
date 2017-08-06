@@ -1,4 +1,24 @@
+.st-table-container {
+  position: relative;
+}
+.st-table-host__controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
 .st-table {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   display: grid;
   grid-template: repeat(5, 1fr) / repeat(5, 1fr);
   border: 1px solid black;
@@ -7,6 +27,15 @@
   .st-table__cell {
     cursor: not-allowed;
   }
+
+  filter: blur(10px) grayscale(20%);
+}
+.st-table--placeholder {
+  .st-table__cell {
+    cursor: not-allowed;
+  }
+
+  filter: blur(10px) grayscale(20%);
 }
 
 .st-table__cell {

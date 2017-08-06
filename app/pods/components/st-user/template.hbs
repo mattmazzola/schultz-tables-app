@@ -16,8 +16,12 @@
   </div>
   {{#if isOpen}}
     <div class="st-user__body">
-      <div>Email:</div><div>{{user.email}}</div>
-      {{#link-to "users.user" user classNames="user"}}Go To Full Profile{{/link-to}}
+      <div class="st-user__proprties">
+        <div>Email:</div><div>{{user.email}}</div>
+      </div>
+      <div class="st-user__link">
+        {{#link-to "users.user" user classNames="user"}}<i class="material-icons">link</i> Go To Full Profile{{/link-to}}
+      </div>
     </div>
   {{/if}}
 </div>
