@@ -19,7 +19,21 @@
 .st-user__body {
   padding: 1em;
   padding-top: 0;
+}
+
+.st-user__proprties {
   display: grid;
   grid: auto / auto 1fr;
   grid-gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .st-user__proprties {
+    grid-gap: 0.5rem;
+    grid-template-columns: auto;
+  }
+}
+
+.st-user__link {
+  padding-top: 1rem;
 }
