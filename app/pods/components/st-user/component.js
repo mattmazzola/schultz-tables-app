@@ -11,10 +11,10 @@ const component = Ember.Component.extend({
 
   chartOptions: computed('user.scores', function () {
     if (!this.get('user.scores')) {
-      return {}
+      return null
     }
 
-    const scoreData = this.get('user.scores').map(score => [score.get('startTime'), score.get('durationMilliseconds')]);
+    const scoreData = this.get('user.scores').map(score => [score.startTime, score.durationMilliseconds / 1000]);
 
     return {
       chart: {
@@ -68,21 +68,18 @@ const component = Ember.Component.extend({
         }
       }
     }
-
-    series: [{
-      type: 'area',
-      name: 'USD to EUR',
-      data: scoreData
-    }]
   }),
 
-  chartData: [{
-    name: 'Jane',
-    data: [1, 0, 9, 4]
-  }, {
-      name: 'John',
-      data: [5, 7, 3]
-    }],
+  chartData: computed('user.scores', function () {
+    const scoreData = this.get('user.scores').map(score => [score.startTime, score.durationMilliseconds / 1000]);
+
+    return [
+      {
+        name: 'Jane',
+        data: scoreData
+      }
+    ]
+  }),
 
   actions: {
     toggle() {
