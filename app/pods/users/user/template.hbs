@@ -7,4 +7,9 @@
     <button type="button" {{action 'invalidateSession'}}>Logout</button>
   </div>
   {{/if}}
+
+  <div>Scores:</div>
+  {{#each model.scores as |score|}}
+    <div>{{moment-format score.startTime 'MMMM D, hh:mm:ss a'}} - {{score.durationMilliseconds}}</div>
+  {{/each}}
 </div>
