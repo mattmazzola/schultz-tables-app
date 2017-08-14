@@ -1,13 +1,16 @@
 import DS from 'ember-data';
+import { PartialModel, partial } from 'ember-data-partial-model/utils/model';
+const { attr, belongsTo } = DS;
 
-const {
-  attr,
-  belongsTo
-} = DS;
-
-export default DS.Model.extend({
+export default PartialModel.extend({
   user: belongsTo('user', { inverse: null }),
   duration: attr('string'),
   durationMilliseconds: attr('number'),
-  details: belongsTo('score-detail', { inverse: null })
+  extended: partial('score', 'extended', {
+    startTime: attr(),
+    endTime: attr('string'),
+    sequence: attr(),
+    tableLayout: attr(),
+    tableType: attr()
+  })
 });

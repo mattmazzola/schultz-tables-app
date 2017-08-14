@@ -1,6 +1,8 @@
 import DS from 'ember-data';
+import PartialModelRESTSerializer from 'ember-data-partial-model/mixins/rest-serializer';
+const { RESTSerializer } = DS;
 
-export default DS.RESTSerializer.extend({
+export default RESTSerializer.extend(PartialModelRESTSerializer, {
   serializeIntoHash(hash, typeClass, snapshot, options) {
     const newHash = this.serialize(snapshot, options);
     Object.assign(hash, newHash)

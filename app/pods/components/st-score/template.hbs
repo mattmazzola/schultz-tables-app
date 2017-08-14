@@ -15,29 +15,29 @@
 </div>
 {{#if isOpen}}
   <div class="st-score__body">
-    {{#unless score.details.isLoaded}}
+    {{#unless score.tableType}}
     <div class="st-score__body-loading center">Loading...</div>
     {{else}}
       <div><i class="material-icons">border_all</i> Size:</div>
-      <div class="value">{{score.details.tableType.width}}w &times; {{score.details.tableType.height}}h</div>
+      <div class="value">{{score.tableType.width}}w &times; {{score.tableType.height}}h</div>
       <div><i class="material-icons">format_list_bulleted</i> Properties:</div>
       <div class="st-score-properties value">
-        {{#each score.details.tableType.properties as |property|}}
+        {{#each score.tableType.properties as |property|}}
         <div>{{property.key}}:</div>
         <div>{{property.value}}</div>
         {{/each}}
       </div>
       <div><i class="material-icons">access_time</i> Start Time:</div>
-      <div class="value">{{moment-format score.details.startTime 'MMMM D, h:mm:ss.SSS a'}}</div>
+      <div class="value">{{moment-format score.startTime 'MMMM D, h:mm:ss.SSS a'}}</div>
       <div><i class="material-icons">access_time</i> End Time:</div>
-      <div class="value">{{moment-format score.details.endTime 'MMMM D, h:mm:ss.SSS a'}}</div>
+      <div class="value">{{moment-format score.endTime 'MMMM D, h:mm:ss.SSS a'}}</div>
       <div><i class="material-icons">format_list_numbered</i> Sequence:</div>
       <div class="st-score-sequence value">
         <div><i class="material-icons">playlist_add_check</i></div>
         <div><i class="material-icons">translate</i></div>
         <div><i class="material-icons">access_time</i></div>
-      {{#each score.details.sequence as |sequence|}}
-        <div>{{#if sequence.correct}}<i class="material-icons correct">done</i>{{else}}<i class="material-icons incorrect">error_outline</i>{{/if}}</div><div>{{sequence.cell.text}}</div><div>+{{st-time-difference sequence.time score.details.startTime}}</div>
+      {{#each score.sequence as |sequence|}}
+        <div>{{#if sequence.correct}}<i class="material-icons correct">done</i>{{else}}<i class="material-icons incorrect">error_outline</i>{{/if}}</div><div>{{sequence.cell.text}}</div><div>+{{st-time-difference sequence.time score.startTime}}</div>
       {{/each}}
       </div>
     {{/unless}}
